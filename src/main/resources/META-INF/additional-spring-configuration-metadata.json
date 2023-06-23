@@ -1,0 +1,67 @@
+{"properties": [
+  {
+    "name": "melissabatch.customerId",
+    "type": "java.lang.String",
+    "description": "Your MelissaData Client ID (Secret)"
+  },
+  {
+    "name": "melissabatch.service.base",
+    "type": "java.lang.String",
+    "description": "The base of the URL for the MelissaData Personator service"
+  },
+  {
+    "name": "melissabatch.service.uri",
+    "type": "java.lang.String",
+    "description": "MelissaData Personator service URI"
+  },
+  {
+    "name": "melissabatch.options",
+    "type": "java.lang.String",
+    "description": "MelissaData Options parameter. See MelissaData documentation for Personator Service."
+  },
+  {
+    "name": "melissabatch.actions",
+    "type": "java.lang.String",
+    "description": "MelissaData Actions parameter. See MelissaData documentation for Personator Service."
+  },
+  {
+    "name": "melissabatch.columns",
+    "type": "java.lang.String",
+    "description": "MelissaData Columns parameter. See MelissaData documentation for Personator Service."
+  },
+  {
+    "name": "melissabatch.batch.timer",
+    "type": "java.lang.String",
+    "description": "This is the delay or backpressure value. This is milliseconds of time before the service checks if a batch is available to send."
+  },
+  {
+    "name": "melissabatch.batch.size",
+    "type": "java.lang.String",
+    "description": "MelissaData maximum size for a batch. See MelissaData documentation for Personator Service."
+  },
+  {
+    "name": "melissabatch.batch.cacheTimeOut",
+    "type": "java.lang.String",
+    "description": "Not to be confused with the batch timer or backpressure; this is how long it takes to timeout while trying to offer a new record to the in-memory queue that has reached its capacity."
+  },
+  {
+    "name": "melissabatch.batch.cache",
+    "type": "java.lang.String",
+    "description": "How many records can be enqueued before the callers are waiting to offer new records.s"
+  },
+  {
+    "name": "melissabatch.connection.timeout",
+    "type": "java.lang.String",
+    "description": "How long to wait before expiring the connection."
+  },
+  {
+    "name": "melissabatch.connection.retry",
+    "type": "java.lang.String",
+    "description": "The number of times to retry a fail connection."
+  },
+  {
+    "name": "melissabatch.connection.retryTime",
+    "type": "java.lang.String",
+    "description": "The time between retries."
+  }
+]}
