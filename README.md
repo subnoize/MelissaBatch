@@ -16,7 +16,7 @@ This starter package was designed to be used in a microservice with the protocol
 This starter will eventually be instrumented for metrics. They were taken out for the moment to faciltate these early releases.
 
 
-# Maven / Gradle Support
+## Maven / Gradle Support
 This project will be available via a repository soon. If you need it sooner please drop a note.
 
 
