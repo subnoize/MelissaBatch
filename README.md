@@ -1,4 +1,6 @@
 # MelissaBatch
+
+## Overview
 The purpose of this Spring starter package is to provide a means by which you can reduce calls to Melissa in a high traffic application. It is designed to coalesce up to 100 requests into a single Melissa REST based batch.
 
 The in-memory queue and workers have several settings that govern how they are periodically polled for records. The value `melissabatch.batch.timer` is the most important for response times as it essentially introduces a delay before processing requests (also referred to as "backpressure"). The delay will regulate how often the in-memory queue is drained, thus large delays would mean more records per batch if the traffic is high enough.
@@ -7,10 +9,10 @@ When the delay expires and processing begins the batching worker will greedily c
 
 MelissaBatch is written to depend on Spring's default thread model. If you need to limit the number of threads servicing MelissaBatch then you would specify a smaller `melissabatch.batch.cache` and then configure the `melissabatch.batch.cacheTimeOut` to keep the request from being rejected for batching.
 
-# Deploying MelissaBatch
+## Deploying MelissaBatch
 This starter package was designed to be used in a microservice with the protocols of your choice. A typical deployment would be to create either a REST or messaging based listener that converts your native Address request object to the specific request record for MelissaBatch. Then, you would add that request to the batch, receiving a `CompleteableFuture<MelissaAddress>` in return. The futures `.get()` or `.get(timeout)` will then return either the requested `MelissaAddress` or an error if the connection was not successful.
 
-# Performance
+## Performance
 This starter will eventually be instrumented for metrics. They were taken out for the moment to faciltate these early releases.
 
 
