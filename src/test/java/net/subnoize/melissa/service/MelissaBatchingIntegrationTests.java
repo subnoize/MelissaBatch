@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.ExecutionException;
 
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +36,8 @@ class MelissaBatchingIntegrationTests {
 	@Autowired
 	private MelissaBatching addr;
 
+	@Disabled
 	@Test
-	@Ignore
 	void testVerifyAddress() throws InterruptedException, ExecutionException, JsonProcessingException {
 
 		AddressRequest a1 = new AddressRequest();
