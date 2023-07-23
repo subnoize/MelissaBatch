@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
+ *
  */
 public class MelissaAddress {
 
@@ -212,4 +212,5 @@ public class MelissaAddress {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
+
 }

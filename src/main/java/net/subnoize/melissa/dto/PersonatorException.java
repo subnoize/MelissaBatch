@@ -1,14 +1,13 @@
 package net.subnoize.melissa.dto;
 
 /**
- * 
  * @author youca
  *
  */
 public class PersonatorException extends Exception {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

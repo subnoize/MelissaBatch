@@ -7,7 +7,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
  * @author jbryant2
  *
  */
@@ -72,6 +71,5 @@ public class PersonatorResponse {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
-	
-	
+
 }

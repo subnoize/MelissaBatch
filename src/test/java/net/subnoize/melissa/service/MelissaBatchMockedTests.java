@@ -31,9 +31,8 @@ import okhttp3.mockwebserver.RecordedRequest;
 
 /**
  * @author youca
- * 
- *         This is a mocked server style test using a canned response from
- *         MelissaData
+ *
+ * This is a mocked server style test using a canned response from MelissaData
  */
 @SpringBootTest
 @TestPropertySource("/test.properties")
@@ -79,9 +78,9 @@ public class MelissaBatchMockedTests {
 		testAddress.setPostalCode("30305");
 		/**
 		 * This is so we can match the canned data to the new request. This feature is
-		 * provided so that you can give your own RecordID to trace processing in
-		 * Melissa Personator but we use it here to make the MockServer's canned data
-		 * match up with our request.
+		 * provided so that you can give your own RecordID to trace processing in Melissa
+		 * Personator but we use it here to make the MockServer's canned data match up
+		 * with our request.
 		 */
 		testAddress.setRecordID("14c908f7-0d5d-4106-9e08-8db42c937ef9");
 
@@ -107,4 +106,5 @@ public class MelissaBatchMockedTests {
 		}
 
 	}
+
 }

@@ -13,7 +13,6 @@ import net.subnoize.melissa.service.AsyncBatchWorker;
 import net.subnoize.melissa.service.PersonatorService;
 
 /**
- * 
  * @author youca
  *
  */

@@ -11,7 +11,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @ComponentScan(basePackages = "net.subnoize.melissa")
 public class Application {
+
 	public static void main(String... args) {
 		SpringApplication.run(Application.class, args);
 	}
+
 }

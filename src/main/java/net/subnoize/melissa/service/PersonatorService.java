@@ -22,7 +22,7 @@ import reactor.util.retry.Retry;
  * http://wiki.melissadata.com/index.php?title=Personator_Consumer
  * http://wiki.melissadata.com/index.php?title=Personator_Consumer%3AJSON
  * http://wiki.melissadata.com/index.php?title=Result_Code_Details#Personator_Consumer
- * 
+ *
  * @author youca
  *
  */
@@ -82,19 +82,17 @@ public class PersonatorService {
 
 	/**
 	 * Constructor takes a WebClient builder
-	 * 
 	 * @param webClientBuilder
 	 */
 	public PersonatorService(WebClient.Builder webClientBuilder, String base) {
 		log.info("Starting MelissaData Personator Service: {}", base);
 		this.webClient = webClientBuilder.baseUrl(base)
-				.defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE).build();
+			.defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+			.build();
 	}
 
 	/**
-	 * Returns the status code from the HTTP Get and is used to provide health
-	 * statistics
-	 * 
+	 * Returns the status code from the HTTP Get and is used to provide health statistics
 	 * @return
 	 */
 	public int melissaDataHealth() {
@@ -108,7 +106,6 @@ public class PersonatorService {
 
 	/**
 	 * Batch can take up to 100 records
-	 * 
 	 * @param mreq
 	 * @return
 	 */
@@ -124,17 +121,19 @@ public class PersonatorService {
 		request.setColumns(columns);
 		request.setTransmissionReference(melissaTransactionId);
 
-		return webClient.post().uri(uriBuilder -> uriBuilder.path(melissaUri).build())
-				.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-				.body(Mono.just(request), PersonatorRequest.class).retrieve().bodyToFlux(PersonatorResponse.class)
-				.timeout(Duration.ofMillis(connectionTimeout))
-				.retryWhen(Retry.fixedDelay(retries, Duration.ofMillis(retryBackoff)).filter(this::is5xxServerError))
-				.blockFirst();
+		return webClient.post()
+			.uri(uriBuilder -> uriBuilder.path(melissaUri).build())
+			.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+			.body(Mono.just(request), PersonatorRequest.class)
+			.retrieve()
+			.bodyToFlux(PersonatorResponse.class)
+			.timeout(Duration.ofMillis(connectionTimeout))
+			.retryWhen(Retry.fixedDelay(retries, Duration.ofMillis(retryBackoff)).filter(this::is5xxServerError))
+			.blockFirst();
 	}
 
 	/**
 	 * Filter which server side exceptions we should retry on
-	 * 
 	 * @param throwable
 	 * @return
 	 */
@@ -145,7 +144,6 @@ public class PersonatorService {
 
 	/**
 	 * Using the single record, "real-time" GET call
-	 * 
 	 * @param mreq the PersonatorRequest
 	 * @return
 	 */
@@ -166,10 +164,13 @@ public class PersonatorService {
 
 		log.debug("PersonatorRequest: {}", req);
 
-		return webClient.get().uri(uriBuilder -> uriBuilder.path(melissaUri).queryParams(req).build()).retrieve()
-				.bodyToFlux(PersonatorResponse.class).timeout(Duration.ofMillis(connectionTimeout))
-				.retryWhen(Retry.fixedDelay(retries, Duration.ofMillis(retryBackoff)).filter(this::is5xxServerError))
-				.blockFirst();
+		return webClient.get()
+			.uri(uriBuilder -> uriBuilder.path(melissaUri).queryParams(req).build())
+			.retrieve()
+			.bodyToFlux(PersonatorResponse.class)
+			.timeout(Duration.ofMillis(connectionTimeout))
+			.retryWhen(Retry.fixedDelay(retries, Duration.ofMillis(retryBackoff)).filter(this::is5xxServerError))
+			.blockFirst();
 	}
 
 }

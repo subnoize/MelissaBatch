@@ -8,7 +8,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
  * @author jbryant2
  *
  */
@@ -16,16 +15,16 @@ public class PersonatorRequest {
 
 	@JsonProperty("TransmissionReference")
 	private String transmissionReference;
-	
+
 	@JsonProperty("Actions")
 	private String actions;
-	
+
 	@JsonProperty("Columns")
 	private String columns;
-	
+
 	@JsonProperty("CustomerID")
 	private String customerID;
-	
+
 	@JsonProperty("Options")
 	private String options;
 
@@ -79,9 +78,10 @@ public class PersonatorRequest {
 	public void setRecords(List<AddressRequest> records) {
 		this.records = records;
 	}
-	
+
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
+
 }
