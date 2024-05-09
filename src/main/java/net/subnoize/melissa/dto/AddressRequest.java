@@ -5,7 +5,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
  * @author jbryant2
  *
  */
@@ -13,7 +12,7 @@ public class AddressRequest {
 
 	@JsonProperty("AddressLine1")
 	private String addressLine1;
-	
+
 	@JsonProperty("AddressLine2")
 	private String addressLine2;
 
@@ -76,7 +75,7 @@ public class AddressRequest {
 
 	@JsonProperty("State")
 	private String state;
-	
+
 	public String getAddressLine1() {
 		return addressLine1;
 	}
@@ -84,7 +83,7 @@ public class AddressRequest {
 	public void setAddressLine1(String addressLine1) {
 		this.addressLine1 = addressLine1;
 	}
-	
+
 	public String getAddressLine2() {
 		return addressLine2;
 	}
@@ -252,9 +251,10 @@ public class AddressRequest {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
+
 }

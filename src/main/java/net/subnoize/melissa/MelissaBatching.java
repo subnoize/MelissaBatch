@@ -16,7 +16,6 @@ import net.subnoize.melissa.dto.MelissaDataBatchFuture;
 import net.subnoize.melissa.service.AsyncBatchWorker;
 
 /**
- * 
  * @author youca
  *
  */
@@ -42,8 +41,8 @@ public class MelissaBatching {
 	}
 
 	/**
-	 * The primary driver to send requests as a batch. Calls the BatchWorker which
-	 * is annotated as @Async making this process just loading the internal queue.
+	 * The primary driver to send requests as a batch. Calls the BatchWorker which is
+	 * annotated as @Async making this process just loading the internal queue.
 	 */
 	@Scheduled(fixedRateString = "${melissadata.batch.timer:1000}")
 	public void batchDriver() {
@@ -56,14 +55,13 @@ public class MelissaBatching {
 			List<MelissaDataBatchFuture> batch = new ArrayList<>();
 			batchCache.drainTo(batch, batchSize);
 			bworker.batchAsync(batch);
-		} while (!batchCache.isEmpty() && batchCache.size() >= batchSize);
+		}
+		while (!batchCache.isEmpty() && batchCache.size() >= batchSize);
 	}
 
 	/**
-	 * Add request to the batch processor queue. If the queue full then this will
-	 * block until the queue has compacity OR it times out with and
-	 * InterruptException
-	 * 
+	 * Add request to the batch processor queue. If the queue full then this will block
+	 * until the queue has compacity OR it times out with and InterruptException
 	 * @param request
 	 * @return
 	 * @throws InterruptedException
@@ -73,4 +71,5 @@ public class MelissaBatching {
 		batchCache.offer(fut, timeout, TimeUnit.MILLISECONDS);
 		return fut;
 	}
+
 }

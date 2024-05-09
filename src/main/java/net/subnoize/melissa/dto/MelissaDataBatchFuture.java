@@ -4,7 +4,6 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * 
  * @author youca
  *
  */
@@ -14,7 +13,7 @@ public class MelissaDataBatchFuture extends CompletableFuture<MelissaAddress> {
 
 	public MelissaDataBatchFuture(AddressRequest request) {
 		super();
-		if(request.getRecordID() == null) {
+		if (request.getRecordID() == null) {
 			request.setRecordID(UUID.randomUUID().toString());
 		}
 		this.request = request;

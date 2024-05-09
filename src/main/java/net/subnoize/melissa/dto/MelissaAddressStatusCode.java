@@ -1,14 +1,13 @@
 package net.subnoize.melissa.dto;
 
 /**
- * 
  * @author John Bryant
  *
  */
 public enum MelissaAddressStatusCode {
-	
+
 	// // @formatter:off
- 
+
 	/**
 	 * AddressRequest Status
 	 */
@@ -154,7 +153,7 @@ public enum MelissaAddressStatusCode {
 	
 	/**
 	 * GE - General Transmission Error
-	 * 
+	 *
 	 * First wto are dups :p
 	 */
 	xGE01("Empty Request Structure","The SOAP, JSON, or XML request structure is empty. Not to be confused with the GE01 GeoCode result code."),
@@ -181,9 +180,9 @@ public enum MelissaAddressStatusCode {
 	GE29("Not Available for Credit License","The requested fields were not available for a credit license. To have access to the demographics fields, please upgrade your license to a subscription.");
 	
 	// @formatter:on
-	
-	
+
 	private String description;
+
 	private String explaination;
 
 	MelissaAddressStatusCode(String description, String explaination) {

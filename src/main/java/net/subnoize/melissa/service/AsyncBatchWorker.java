@@ -19,27 +19,24 @@ import net.subnoize.melissa.dto.PersonatorRequest;
 import net.subnoize.melissa.dto.PersonatorResponse;
 
 /**
- * 
  * @author youca
  *
  */
 public class AsyncBatchWorker {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(AsyncBatchWorker.class);
 
-   
 	@Autowired
 	private PersonatorService pserv;
 
 	/**
-	 * 
 	 * @param records
-	 * @throws JsonProcessingException 
+	 * @throws JsonProcessingException
 	 */
 	@Async
 	public void batchAsync(List<MelissaDataBatchFuture> records) {
-		
-		log.debug("Starting batch: {}",records.size());
+
+		log.debug("Starting batch: {}", records.size());
 
 		PersonatorRequest batch = new PersonatorRequest();
 		Map<String, MelissaDataBatchFuture> map = new HashMap<>();
@@ -51,24 +48,27 @@ public class AsyncBatchWorker {
 		});
 
 		PersonatorResponse res = pserv.batch(UUID.randomUUID().toString(), batch);
-		
+
 		try {
 			log.debug(new ObjectMapper().writeValueAsString(res));
-		} catch (JsonProcessingException e) {
+		}
+		catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		if (res.getRecords() == null || res.getRecords().isEmpty()) {
 			records.forEach(r -> {
 				r.completeExceptionally(new PersonatorException("No results"));
 			});
-		} else {
-			log.debug("Batch complete: {}",res.getTotalRecords());
+		}
+		else {
+			log.debug("Batch complete: {}", res.getTotalRecords());
 			res.getRecords().forEach(r -> {
 				log.debug("Record Request Complete: {}", r.getRecordId());
 				map.get(r.getRecordId()).complete(r);
 			});
 		}
 	}
+
 }

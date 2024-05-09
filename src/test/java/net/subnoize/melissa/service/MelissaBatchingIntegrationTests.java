@@ -23,9 +23,9 @@ import net.subnoize.melissa.dto.MelissaDataBatchFuture;
 
 /**
  * @author youca
- * 
- *         In order to run this test you MUST have a real Melissa account and
- *         populate that into the configs for this test.
+ *
+ * In order to run this test you MUST have a real Melissa account and populate that into
+ * the configs for this test.
  */
 @SpringBootTest
 @TestPropertySource("/test.properties")
